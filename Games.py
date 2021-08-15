@@ -22,7 +22,7 @@ class Games(commands.Cog):
             await ctx.send("Correct")
         else:
             await ctx.send(f"Nope it was {computer}")
-    @commands.command(name='rps',description='Challenge a player in a best of three game of rock paper scissors')
+    @commands.command(name='spr',description='Challenge a player in a best of three game of rock paper scissors')
     async def rps(self,ctx, member:discord.Member):
         host = ctx.author
 
