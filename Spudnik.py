@@ -125,7 +125,7 @@ async def mute(ctx, member : discord.Member, hours=0, minutes=10, seconds=0, *,r
         await member.send(f'Until you\'re unmuted by a mod')
 
 @client.command(brief='Unmutes a User')
-@commands.has_role('Owner')
+@commands.has_role('Starscream')
 async def unmute(ctx, member : discord.Member):
     guild = ctx.guild
     unmute = discord.utils.get(guild.roles,name='Muted')
@@ -221,10 +221,12 @@ async def unban(ctx, *, member):
 async def on_member_join(member:discord.Member):
     await member.send(f'Hi **{member.name}**, Welcome to the Server! Be sure to read the rules to stay out of trouble. Have a great time!')
     print("Joined")
+    data[server] = dat
     #print(type(data) + 'asdasdasdasdad')
     if not str(member.id) in data['Left'].keys():
         memberData = {
                 'User' : member.name,
+                'Nickname':member.nick,
                 'Avatar_Url' : str(member.avatar_url),
                 'Id' : str(member.id),
                 'Good_Deeds': 0,
@@ -299,7 +301,7 @@ async def bank(ctx):
         pass
     await ctx.send(f'You have {coins_int} :coin:')
 @client.command()
-@commands.has_role('Owner')
+@commands.has_role('Starscream')
 async def kick(ctx, member :discord.Member, *,reason=None):
     await member.kick(reason=reason)
     await member.send(f'You have been kicked from {ctx.guild} for {reason}')
@@ -374,36 +376,32 @@ async def on_message(message):
             await message.author.send(f"{message.author.mention} This is your First and Last warning! Anymore curses and you will be kicked")
             warned.append(message.author)
         print(curses)
-    elif "pathetic" in str(message.content):
-        await message.channel.send(message.content)
     elif message.content ==  "save all":
         x = message.guild.members
         server = ctx.message.guild.name
         data[server] = dat
-        roles = {}
-        # for role in message.guild.roles:
-        #     print(role)
-        #     members = role.members
-        for member in x:
-            memberData = {
-                'User' : member.name,
-                'Avatar_Url' : str(member.avatar_url),
-                'Id' : str(member.id),
-                'Good_Deeds': 0, # data['Left'][str(member.id)]['Good_Deeds']
-                'Bad_Deeds' : 0,
-                'Mutes': 0,
-                'Kicks':0,
-                "Wins":0,
-                "Loses":0,
-                'RPS':'0',
-                'Bans': False
-            }
-            print(member.name)
-            data[server]['Member'][str(member.id)] = memberData
-        print(roles)
+        for role in ctx.message.guild.roles:
+            memebers = {}
+            for member in role.members:
+                memberData = {
+                    'User' : member.name,
+                    'Nickname':member.nick,
+                    'Avatar_Url' : str(member.avatar_url),
+                    'Id' : str(member.id),
+                    'Good_Deeds': 0, # data['Left'][str(member.id)]['Good_Deeds'] Starscream
+                    'Bad_Deeds' : 0,
+                    'Mutes': 0,
+                    'Kicks':0,
+                    "Wins":0,
+                    "Loses":0,
+                    'RPS':'0',
+                    'Bans': False
+                }
+                memebers[str(member.id)] = memberData
+            data[server]['Member'][str(role)] = memebers
+        # print(data)
         with open('Users.json','w') as f:
-                json.dump(data,f, indent=5)
-                print('dumped')
+            json.dump(data,f, indent=5)
     await client.process_commands(message)
 
 for fileName in os.listdir('./cogs'):
