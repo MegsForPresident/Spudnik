@@ -362,6 +362,9 @@ async def status(ctx):
 async def grabSong(ctx,member:discord.Member):
     embed = discord.Embed
 
+@client.command()
+async def aa(ctx):
+    await ctx.send("As")
 @client.event
 async def on_message(message):
     print(message.author,"messaged",message.content)
