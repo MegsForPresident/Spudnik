@@ -179,6 +179,7 @@ async def rps(ctx,member:discord.Member):
                 return 2 if entity2 == "scissor" else 1
             if entity == 'scissor':
                 return 2 if entity2 == "rock" else 1
+                
         for i in range(3):
             await member.send(f'Waiting for {author.mention}...')
             await author.send('Your Turn')
