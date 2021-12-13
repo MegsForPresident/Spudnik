@@ -1,0 +1,68 @@
+{
+     "Dreadwing's Loyalty Group": {
+          "@everyone": {
+               "721942871422271619": {
+                    "User": "MegaMelon",
+                    "Nickname": null,
+                    "Id": "721942871422271619"
+               },
+               "758713337613385750": {
+                    "User": "Wings_Of_Dread",
+                    "Nickname": "Dreadwing",
+                    "Id": "758713337613385750"
+               },
+               "872110188524609546": {
+                    "User": "Slimy Skull",
+                    "Nickname": null,
+                    "Id": "872110188524609546"
+               }
+          },
+          "Megatron Followers": {
+               "721942871422271619": {
+                    "User": "MegaMelon",
+                    "Nickname": null,
+                    "Id": "721942871422271619"
+               }
+          },
+          "Slimy Skull": {
+               "872110188524609546": {
+                    "User": "Slimy Skull",
+                    "Nickname": null,
+                    "Id": "872110188524609546"
+               }
+          },
+          "Muted": {
+               "721942871422271619": {
+                    "User": "MegaMelon",
+                    "Nickname": null,
+                    "Id": "721942871422271619"
+               }
+          },
+          "Bot Boi": {
+               "872110188524609546": {
+                    "User": "Slimy Skull",
+                    "Nickname": null,
+                    "Id": "872110188524609546"
+               }
+          },
+          "Megatron": {
+               "758713337613385750": {
+                    "User": "Wings_Of_Dread",
+                    "Nickname": "Dreadwing",
+                    "Id": "758713337613385750"
+               }
+          },
+          "Soundwave's Minicons": {
+               "721942871422271619": {
+                    "User": "MegaMelon",
+                    "Nickname": null,
+                    "Id": "721942871422271619"
+               },
+               "758713337613385750": {
+                    "User": "Wings_Of_Dread",
+                    "Nickname": "Dreadwing",
+                    "Id": "758713337613385750"
+               }
+          }
+     }
+}
