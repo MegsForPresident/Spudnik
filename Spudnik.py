@@ -17,8 +17,11 @@ def save(data):
 curses = []
 warned = []
 coins = {}
+
 data = {}
 roles = {}
+servers = {}
+
 dat = {
     "Member":{},
     "Left":{},
@@ -31,11 +34,19 @@ with open('Users.json') as f:
             data = json.load(f)
         except Exception:
             data = {}
+
 with open('Roles.json') as f:
     try:
         roles = json.load(f)
     except Exception:
         roles = {}
+
+with open('Servers.json') as f:
+    try:
+        servers = json.load(f)
+    except Exception:
+        servers = {}
+
 @client.event
 async def on_command_error(ctx, error):
     if isinstance(error, commands.CommandNotFound):
@@ -179,7 +190,7 @@ async def rps(ctx,member:discord.Member):
                 return 2 if entity2 == "scissor" else 1
             if entity == 'scissor':
                 return 2 if entity2 == "rock" else 1
-                
+
         for i in range(3):
             await member.send(f'Waiting for {author.mention}...')
             await author.send('Your Turn')
@@ -259,12 +270,10 @@ async def on_member_join(member:discord.Member):
     embed.add_field(name="Status", value=member.mobile_status)
     embed.add_field(name="Nitro", value=member.premium_since)
     embed.set_image(url=member.avatar_url)
-    if member.guild.name == "Decepticons":
-        chn = client.get_channel(904579620026859581)
-        await chn.send(embed=embed)
-    with open('Users.json','w') as f:
-            json.dump(data,f, indent=5)
-            print('dumped')
+
+    chn = await client.get_channel(int(servers['Welcome']))
+    await chn.send(embed=embed)
+
     print(member.guild.name)
     followers = discord.utils.get(member.guild.roles,name='Megatron Followers')
     await member.add_roles(followers)
@@ -273,10 +282,6 @@ async def on_member_join(member:discord.Member):
 
 @client.event
 async def on_member_remove(member:discord.Member):
-    print('Coming from Leaving')
-    print(data[member.guild.name]['Member'][str(member.id)])
-    print(data[member.guild.name]['Member'][str(member.id)]["Ban"])
-    print(data[member.guild.name]['Member'][str(member.id)]['Ban'])
     def determine():
         if data[member.guild.name]['Member'][str(member.id)]['Ban']:
             return 'Dead'
@@ -284,6 +289,19 @@ async def on_member_remove(member:discord.Member):
     to = determine()
     data[member.guild.name][to][str(member.id)] = data[member.guild.name]['Member'][str(member.id)]
     del data[member.guild.name]['Member'][str(member.id)]
+    
+    embed = discord.Embed(colour=member.color)
+    embed.set_author(name=f"Adiue from the Decepticons")
+    embed.add_field(name="Name", value=member.display_name)
+    embed.add_field(name="Account Created on",value=member.created_at.strftime("%d.%m.%Y,\n%H:%M.%S"))    
+    embed.add_field(name="Joined:", value=member.joined_at.strftime("%d.%m.%Y,\n%H:%M.%S"))    
+    embed.add_field(name="Is Bot", value='Yes' if member.bot else 'No')
+    embed.add_field(name="Status", value=member.mobile_status)
+    embed.add_field(name="Nitro", value=member.premium_since)
+    embed.set_image(url=member.avatar_url)
+    
+    chn = await client.get_channel(int(servers['Leave']))
+    await chn.send(embed=embed)
 
     with open('Users.json','w') as f:
         json.dump(data,f,indent=5)
@@ -420,9 +438,38 @@ async def on_reaction_add(reaction, user):
 
 @client.event
 async def on_message(message):
-    print(message.author,"messaged",message.content)
+    print("\n",message.author,"messaged",message.content)
     ctx = await client.get_context(message)
+    member = message.author
+    server = ctx.guild
+
     if(message.author == client.user):
+        if message.content == "":
+            owner = server.owner
+            def check(message):
+                return owner.id == message.author.id
+
+            await owner.send("Send the Welcoming Id:")
+            wel = await client.wait_for('message',check=check)
+
+            await owner.send("Send the Leaving Id:")
+            lev = await client.wait_for('message',check=check)
+
+
+            await owner.send("Send the Main role Id:")
+            rol = await client.wait_for('message',check=check)
+
+
+            serverData = {
+                "Welcome": str(wel.content),
+                "Leave":str(lev.content),
+                "Role":str(rol.content),
+                "Owner":str(member.id)
+            }
+
+            servers[server.name] = serverData
+            with open('Servers.json','w') as f:
+                json.dump(servers,f, indent=5)
         return
     if not len(curses) == 0 and not "spud." in message.content and (curse in message for curse in curses):
         if message.author in warned:
@@ -473,9 +520,37 @@ async def on_message(message):
             json.dump(data,f, indent=5)
     elif "pathetic" in message.content.lower():
         await ctx.send(message.content)
+    elif message.content == 'save server':
+        owner = server.owner
+        def check(message):
+            return owner.id == message.author.id
+
+        await owner.send("Send the Welcoming Id:")
+        wel = await client.wait_for('message',check=check)
+
+        await owner.send("Send the Leaving Id:")
+        lev = await client.wait_for('message',check=check)
+
+
+        await owner.send("Send the Main role Id:")
+        rol = await client.wait_for('message',check=check)
+
+
+        serverData = {
+            "Welcome": str(wel.content),
+            "Leave":str(lev.content),
+            "Role":str(rol.content),
+            "Owner":str(member.id)
+        }
+
+        servers[server.name] = serverData
+        with open('Servers.json','w') as f:
+            json.dump(servers,f, indent=5)
     await client.process_commands(message)
 
 for fileName in os.listdir('./cogs'):
     if fileName.endswith('.py'):
         client.load_extension(f'cogs.{fileName[:-3]}') 
-client.run('ODcwNjY5Mjc2ODcxMjYyMjE4.YQQH8w.ehGmhZzR6_Mx0EPqQUc9lC6rjuE')
+client.run('OTEyMzc2NzUwODYyODkzMTI.YZvDEA.Qky0TaywqTYnggQtTeD8IbtjOHQ')
+
+# ⬢

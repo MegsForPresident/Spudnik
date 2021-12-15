@@ -15,36 +15,6 @@
                     "RPS": "0",
                     "Ban": false,
                     "Reasons": []
-               },
-               "758713337613385750": {
-                    "User": "Wings_Of_Dread",
-                    "Nickname": "Dreadwing",
-                    "Avatar_Url": "https://cdn.discordapp.com/avatars/758713337613385750/e56ed8b989cc3a9a6b1bd7e7742a5d54.webp?size=1024",
-                    "Id": "758713337613385750",
-                    "Good_Deeds": 0,
-                    "Bad_Deeds": 0,
-                    "Mutes": 0,
-                    "Kicks": 0,
-                    "Wins": 0,
-                    "Loses": 0,
-                    "RPS": "0",
-                    "Ban": false,
-                    "Reasons": []
-               },
-               "872110188524609546": {
-                    "User": "Slimy Skull",
-                    "Nickname": null,
-                    "Avatar_Url": "https://cdn.discordapp.com/avatars/872110188524609546/d3484f2ec5fac82476bd27c02a08d61d.webp?size=1024",
-                    "Id": "872110188524609546",
-                    "Good_Deeds": 0,
-                    "Bad_Deeds": 0,
-                    "Mutes": 0,
-                    "Kicks": 0,
-                    "Wins": 0,
-                    "Loses": 0,
-                    "RPS": "0",
-                    "Ban": false,
-                    "Reasons": []
                }
           },
           "Left": {},
