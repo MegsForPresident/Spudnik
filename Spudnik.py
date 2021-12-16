@@ -565,6 +565,6 @@ async def on_message(message):
 for fileName in os.listdir('./cogs'):
     if fileName.endswith('.py'):
         client.load_extension(f'cogs.{fileName[:-3]}') 
-client.run('OTEyMzc2NzUwODYyODkzMTI2.YZvDEA.Qky0TaywqTYnggQtTeD8IbtjOHQ')
+client.run('OTEyMzc2NzUwODYyODkzMTI2.YZvDEA.wy2qGmvp3NeXXPmsKXTFReYRg')
 
 # ⬢
