@@ -93,6 +93,8 @@ async def alert(ctx,role :discord.Role, *,reason):
             print(i)
             await user.send(reason)
             break
+
+
 @client.command()
 async def load(ctx, extension):
     client.load_extension(f'cogs.{extension}')
@@ -271,17 +273,18 @@ async def on_member_join(member:discord.Member):
     embed.add_field(name="Nitro", value=member.premium_since)
     embed.set_image(url=member.avatar_url)
 
-    chn = await client.get_channel(int(servers['Welcome']))
+    chn = client.get_channel(int(servers[server]['Welcome']))
     await chn.send(embed=embed)
 
     print(member.guild.name)
-    followers = discord.utils.get(member.guild.roles,name='Megatron Followers')
+    followers = discord.utils.get(member.guild.roles,id=int(servers[server]['Role']))
     await member.add_roles(followers)
 # Create a server name folder and store the nessacary files there
 #asdasd
 
 @client.event
 async def on_member_remove(member:discord.Member):
+    server = member.guild.name
     def determine():
         if data[member.guild.name]['Member'][str(member.id)]['Ban']:
             return 'Dead'
@@ -300,7 +303,7 @@ async def on_member_remove(member:discord.Member):
     embed.add_field(name="Nitro", value=member.premium_since)
     embed.set_image(url=member.avatar_url)
     
-    chn = await client.get_channel(int(servers['Leave']))
+    chn =  client.get_channel(int(servers[server]['Leave']))
     await chn.send(embed=embed)
 
     with open('Users.json','w') as f:
@@ -365,6 +368,14 @@ async def ban(ctx, member :discord.Member, *,reason=None):
     print(reason)
     data[ctx.guild.name]['Member'][str(member.id)]['Bans'] = True
     await member.ban(reason=reason)
+
+@client.command(brief="Bans a member with time limit",aliases=['timeban','Timeban','TimeBan'])
+async def timeBan(ctx,member:discord.Member,hours=0,minutes=0,secs=0,*,reason=None):
+    data[ctx.guild.name]['Member'][str(member.id)]['Bans'] = True
+    await member.ban(reason=reason)
+    secs = (hours * 3600) + (minutes*60) + secs 
+    data[ctx.guild.name]['Member'][str(member.id)]['Bans'] = False
+    await member.unban(reason=reason)
 
 @clear.error
 async def clear_error(ctx,error):
@@ -443,27 +454,28 @@ async def on_message(message):
     member = message.author
     server = ctx.guild
 
-    if(message.author == client.user):
+    if message.author == client.user and message.embeds == []:
         if message.content == "":
             owner = server.owner
             def check(message):
                 return owner.id == message.author.id
-
-            await owner.send("Send the Welcoming Id:")
+            await owner.send("Send the Welcoming:")
             wel = await client.wait_for('message',check=check)
 
-            await owner.send("Send the Leaving Id:")
+            await owner.send("Send the Leaving:")
             lev = await client.wait_for('message',check=check)
 
 
-            await owner.send("Send the Main role Id:")
+            await owner.send("Send the Main role:")
             rol = await client.wait_for('message',check=check)
 
 
             serverData = {
-                "Welcome": str(wel.content),
-                "Leave":str(lev.content),
-                "Role":str(rol.content),
+                'Name':server.name,
+                'Avatar':server.avatar,
+                "Welcome": str(wel.channel_mentions[0].id),
+                "Leave":str(lev.channel_mentions[0].id),
+                "Role":str(rol.role_mentions[0].id),
                 "Owner":str(member.id)
             }
 
@@ -471,6 +483,7 @@ async def on_message(message):
             with open('Servers.json','w') as f:
                 json.dump(servers,f, indent=5)
         return
+
     if not len(curses) == 0 and not "spud." in message.content and (curse in message for curse in curses):
         if message.author in warned:
             await mute(ctx, message.author ,hours=1 ,minutes=1 ,seconds=1 ,reason="For Cursing")
@@ -525,23 +538,24 @@ async def on_message(message):
         def check(message):
             return owner.id == message.author.id
 
-        await owner.send("Send the Welcoming Id:")
+        await ctx.send("Send the Welcoming Id:")
         wel = await client.wait_for('message',check=check)
 
-        await owner.send("Send the Leaving Id:")
+        await ctx.send("Send the Leaving Id:")
         lev = await client.wait_for('message',check=check)
 
 
-        await owner.send("Send the Main role Id:")
+        await ctx.send("Send the Main role Id:")
         rol = await client.wait_for('message',check=check)
 
 
         serverData = {
-            "Welcome": str(wel.content),
-            "Leave":str(lev.content),
-            "Role":str(rol.content),
-            "Owner":str(member.id)
-        }
+                'Name':server.name,
+                "Welcome": str(wel.channel_mentions[0].id),
+                "Leave":str(lev.channel_mentions[0].id),
+                "Role":str(rol.role_mentions[0].id),
+                "Owner":str(member.id)
+            }
 
         servers[server.name] = serverData
         with open('Servers.json','w') as f:
@@ -551,6 +565,6 @@ async def on_message(message):
 for fileName in os.listdir('./cogs'):
     if fileName.endswith('.py'):
         client.load_extension(f'cogs.{fileName[:-3]}') 
-client.run('OTEyMzc2NzUwODYyODkzMTI.YZvDEA.Qky0TaywqTYnggQtTeD8IbtjOHQ')
+client.run('OTEyMzc2NzUwODYyODkzMTI2.YZvDEA.Qky0TaywqTYnggQtTeD8IbtjOHQ')
 
 # ⬢
