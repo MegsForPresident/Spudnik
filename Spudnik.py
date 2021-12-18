@@ -279,6 +279,19 @@ async def on_member_join(member:discord.Member):
     print(member.guild.name)
     followers = discord.utils.get(member.guild.roles,id=int(servers[server]['Role']))
     await member.add_roles(followers)
+    memberData = {
+        'User' : member.name,
+        'Nickname':member.nick,
+        'Id' : str(member.id)
+    }
+    roles[server][str(followers)][memberData['Id']] = memberData
+    print(memberData)
+    memberData = {}
+    with open('Roles.json','w') as f:
+            json.dump(roles,f, indent=5)
+    print(data)
+    with open('Users.json','w') as f:
+        json.dump(data,f, indent=5)
 # Create a server name folder and store the nessacary files there
 #asdasd
 
@@ -363,20 +376,27 @@ async def kick_error(ctx,error):
         await ctx.send('The Correct way is \nspud.kick <member> (reason)\nwhere the <> is a must and () is optional')
 
 @client.command(brief="Bans a member")
-@commands.has_role('Soundwave\'s Minicons')
 async def ban(ctx, member :discord.Member, *,reason=None):
     print(reason)
     data[ctx.guild.name]['Member'][str(member.id)]['Bans'] = True
+    await member.send("Moderators have banned you for"+reason)
     await member.ban(reason=reason)
-
+    
 @client.command(brief="Bans a member with time limit",aliases=['timeban','Timeban','TimeBan'])
-async def timeBan(ctx,member:discord.Member,hours=0,minutes=0,secs=0,*,reason=None):
+async def timeBan(ctx,member:discord.Member,hours=0,minutes=0,*,reason=None):
     data[ctx.guild.name]['Member'][str(member.id)]['Bans'] = True
+    url = await ctx.channel.create_invite(max_uses=1,reason="Reinviting a Time Banned Member")
+    await member.send("Moderators have banned you for "+reason+" And you will be able to join back in "+str(hours)+" Hour"+('s'if hours > 1 else '')+" and "+str(minutes)+" minute"+('s'if hours > 1 else ''))
+    await member.send('Here is your invite'+str(url))
     await member.ban(reason=reason)
-    secs = (hours * 3600) + (minutes*60) + secs 
+    secs = (hours * 3600) + (minutes*60)
+    await asyncio.sleep(secs)
     data[ctx.guild.name]['Member'][str(member.id)]['Bans'] = False
     await member.unban(reason=reason)
 
+@timeBan.error
+async def timeBan_error(ctx,error):
+    print(error)
 @clear.error
 async def clear_error(ctx,error):
     if isinstance(error, commands.MissingRequiredArgument):
@@ -495,7 +515,8 @@ async def on_message(message):
     elif message.content ==  "save all" and message.author == ctx.guild.owner:
         x = message.guild.members
         server = ctx.message.guild.name
-        data[server] = dat
+        if data[server] == []:
+            data[server] = dat
         roles[server] = {}
         for role in ctx.message.guild.roles:
             memebers = {}
@@ -565,6 +586,5 @@ async def on_message(message):
 for fileName in os.listdir('./cogs'):
     if fileName.endswith('.py'):
         client.load_extension(f'cogs.{fileName[:-3]}') 
-client.run('OTEyMzc2NzUwODYyODkzMTI2.YZvDEA.wy2qGmvp3NeXXPmsKXTFReYRg')
 
 # ⬢

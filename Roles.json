@@ -1,6 +1,11 @@
 {
      "Dreadwing's Loyalty Group": {
           "@everyone": {
+               "721942871422271619": {
+                    "User": "MegaMelon",
+                    "Nickname": null,
+                    "Id": "721942871422271619"
+               },
                "758713337613385750": {
                     "User": "Wings_Of_Dread",
                     "Nickname": null,
@@ -10,11 +15,6 @@
                     "User": "Praimus",
                     "Nickname": null,
                     "Id": "912376750862893126"
-               },
-               "721942871422271619": {
-                    "User": "MegaMelon",
-                    "Nickname": null,
-                    "Id": "721942871422271619"
                }
           },
           "Loyal Follower": {
