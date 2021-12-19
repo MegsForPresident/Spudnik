@@ -230,7 +230,7 @@ async def unban(ctx, *, member):
         user = ban_entry.user
         if (user.name, user.discriminator) == (user_name, discriminator):
             await ctx.guild.unban(user)
-            await ctx.send(f'Unbanned @{user}')
+            await ctx.send(f'Unbanned {user.mention}')
             await member.send(f'You have been unbanned in {ctx.guild.name}')
             link = await ctx.channel.create_invite(max_age = 300)
             await member.send("Here is an instant invite to the client: " + link)
@@ -386,13 +386,16 @@ async def ban(ctx, member :discord.Member, *,reason=None):
 async def timeBan(ctx,member:discord.Member,hours=0,minutes=0,*,reason=None):
     data[ctx.guild.name]['Member'][str(member.id)]['Bans'] = True
     url = await ctx.channel.create_invite(max_uses=1,reason="Reinviting a Time Banned Member")
-    await member.send("Moderators have banned you for "+reason+" And you will be able to join back in "+str(hours)+" Hour"+('s'if hours > 1 else '')+" and "+str(minutes)+" minute"+('s'if hours > 1 else ''))
+    await member.send("Moderators have banned you for "+reason+" And you will be able to join back in "+str(hours)+" Hour"+('s'if hours != 1 else '')+" and "+str(minutes)+" minute"+('s'if minutes != 1 else ''))
     await member.send('Here is your invite'+str(url))
     await member.ban(reason=reason)
     secs = (hours * 3600) + (minutes*60)
     await asyncio.sleep(secs)
+    print('unbanned')
+    await unban(ctx,member)
+    print('Unbbaned')
     data[ctx.guild.name]['Member'][str(member.id)]['Bans'] = False
-    await member.unban(reason=reason)
+    
 
 @timeBan.error
 async def timeBan_error(ctx,error):
@@ -586,5 +589,6 @@ async def on_message(message):
 for fileName in os.listdir('./cogs'):
     if fileName.endswith('.py'):
         client.load_extension(f'cogs.{fileName[:-3]}') 
-
+# client.run('ODcwNjY5Mjc2ODcxMjYyMjE4.YQQH8w.Od5lsYmpsJ9BnvHrWzIZOYSdRFE') unban
+client.run('OTEyMzc2NzUwODYyODkzMTI2.YZvDEA.wy2qGmvp3NeXXPmsKXTFReYRgKk')
 # ⬢

@@ -1,37 +1,6 @@
 {
      "Dreadwing's Loyalty Group": {
-          "Member": {
-               "758713337613385750": {
-                    "User": "Wings_Of_Dread",
-                    "Nickname": null,
-                    "Avatar_Url": "https://cdn.discordapp.com/avatars/758713337613385750/8c6d835c59a9a316ff97f5cfb052ad9e.webp?size=1024",
-                    "Id": "758713337613385750",
-                    "Good_Deeds": 0,
-                    "Bad_Deeds": 0,
-                    "Mutes": 0,
-                    "Kicks": 0,
-                    "Wins": 0,
-                    "Loses": 0,
-                    "RPS": "0",
-                    "Ban": false,
-                    "Reasons": []
-               },
-               "912376750862893126": {
-                    "User": "Praimus",
-                    "Nickname": null,
-                    "Avatar_Url": "https://cdn.discordapp.com/embed/avatars/0.png",
-                    "Id": "912376750862893126",
-                    "Good_Deeds": 0,
-                    "Bad_Deeds": 0,
-                    "Mutes": 0,
-                    "Kicks": 0,
-                    "Wins": 0,
-                    "Loses": 0,
-                    "RPS": "0",
-                    "Ban": false,
-                    "Reasons": []
-               }
-          },
+          "Member": {},
           "Left": {
                "721942871422271619": {
                     "User": "MegaMelon",
@@ -47,7 +16,7 @@
                     "RPS": "0",
                     "Ban": false,
                     "Reasons": [],
-                    "Bans": false
+                    "Bans": true
                }
           },
           "Dead": {}
