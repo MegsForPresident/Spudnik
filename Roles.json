@@ -1,11 +1,6 @@
 {
      "Dreadwing's Loyalty Group": {
           "@everyone": {
-               "721942871422271619": {
-                    "User": "MegaMelon",
-                    "Nickname": null,
-                    "Id": "721942871422271619"
-               },
                "758713337613385750": {
                     "User": "Wings_Of_Dread",
                     "Nickname": null,
@@ -36,6 +31,51 @@
                     "User": "Praimus",
                     "Nickname": null,
                     "Id": "912376750862893126"
+               }
+          }
+     },
+     "GitHub Personal": {
+          "@everyone": {
+               "758713337613385750": {
+                    "User": "Wings_Of_Dread",
+                    "Nickname": null,
+                    "Id": "758713337613385750"
+               },
+               "837614958870921236": {
+                    "User": "Google Bot",
+                    "Nickname": null,
+                    "Id": "837614958870921236"
+               },
+               "870669276871262218": {
+                    "User": "Spudnik",
+                    "Nickname": null,
+                    "Id": "870669276871262218"
+               },
+               "912376750862893126": {
+                    "User": "Praimus",
+                    "Nickname": null,
+                    "Id": "912376750862893126"
+               }
+          },
+          "Praimus": {
+               "912376750862893126": {
+                    "User": "Praimus",
+                    "Nickname": null,
+                    "Id": "912376750862893126"
+               }
+          },
+          "Google Bot": {
+               "837614958870921236": {
+                    "User": "Google Bot",
+                    "Nickname": null,
+                    "Id": "837614958870921236"
+               }
+          },
+          "Spudnik": {
+               "870669276871262218": {
+                    "User": "Spudnik",
+                    "Nickname": null,
+                    "Id": "870669276871262218"
                }
           }
      }

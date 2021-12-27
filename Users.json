@@ -1,7 +1,36 @@
 {
      "Dreadwing's Loyalty Group": {
-          "Member": {},
-          "Left": {
+          "Member": {
+               "758713337613385750": {
+                    "User": "Wings_Of_Dread",
+                    "Nickname": null,
+                    "Avatar_Url": "https://cdn.discordapp.com/avatars/758713337613385750/8c6d835c59a9a316ff97f5cfb052ad9e.webp?size=1024",
+                    "Id": "758713337613385750",
+                    "Good_Deeds": 0,
+                    "Bad_Deeds": 0,
+                    "Mutes": 0,
+                    "Kicks": 0,
+                    "Wins": 0,
+                    "Loses": 0,
+                    "RPS": "0",
+                    "Ban": false,
+                    "Reasons": []
+               },
+               "912376750862893126": {
+                    "User": "Praimus",
+                    "Nickname": null,
+                    "Avatar_Url": "https://cdn.discordapp.com/embed/avatars/0.png",
+                    "Id": "912376750862893126",
+                    "Good_Deeds": 0,
+                    "Bad_Deeds": 0,
+                    "Mutes": 0,
+                    "Kicks": 0,
+                    "Wins": 0,
+                    "Loses": 0,
+                    "RPS": "0",
+                    "Ban": false,
+                    "Reasons": []
+               },
                "721942871422271619": {
                     "User": "MegaMelon",
                     "Nickname": null,
@@ -15,10 +44,76 @@
                     "Loses": 0,
                     "RPS": "0",
                     "Ban": false,
-                    "Reasons": [],
-                    "Bans": true
+                    "Reasons": []
                }
           },
+          "Left": {},
+          "Dead": {}
+     },
+     "GitHub Personal": {
+          "Member": {
+               "758713337613385750": {
+                    "User": "Wings_Of_Dread",
+                    "Nickname": null,
+                    "Avatar_Url": "https://cdn.discordapp.com/avatars/758713337613385750/8c6d835c59a9a316ff97f5cfb052ad9e.webp?size=1024",
+                    "Id": "758713337613385750",
+                    "Good_Deeds": 0,
+                    "Bad_Deeds": 0,
+                    "Mutes": 0,
+                    "Kicks": 0,
+                    "Wins": 0,
+                    "Loses": 0,
+                    "RPS": "0",
+                    "Ban": false,
+                    "Reasons": []
+               },
+               "837614958870921236": {
+                    "User": "Google Bot",
+                    "Nickname": null,
+                    "Avatar_Url": "https://cdn.discordapp.com/avatars/837614958870921236/8da98c33b3375c8beac37d08580e2a3b.webp?size=1024",
+                    "Id": "837614958870921236",
+                    "Good_Deeds": 0,
+                    "Bad_Deeds": 0,
+                    "Mutes": 0,
+                    "Kicks": 0,
+                    "Wins": 0,
+                    "Loses": 0,
+                    "RPS": "0",
+                    "Ban": false,
+                    "Reasons": []
+               },
+               "870669276871262218": {
+                    "User": "Spudnik",
+                    "Nickname": null,
+                    "Avatar_Url": "https://cdn.discordapp.com/avatars/870669276871262218/b99daea7dbeab9ea1f86fc817fe7bddf.webp?size=1024",
+                    "Id": "870669276871262218",
+                    "Good_Deeds": 0,
+                    "Bad_Deeds": 0,
+                    "Mutes": 0,
+                    "Kicks": 0,
+                    "Wins": 0,
+                    "Loses": 0,
+                    "RPS": "0",
+                    "Ban": false,
+                    "Reasons": []
+               },
+               "912376750862893126": {
+                    "User": "Praimus",
+                    "Nickname": null,
+                    "Avatar_Url": "https://cdn.discordapp.com/embed/avatars/0.png",
+                    "Id": "912376750862893126",
+                    "Good_Deeds": 0,
+                    "Bad_Deeds": 0,
+                    "Mutes": 0,
+                    "Kicks": 0,
+                    "Wins": 0,
+                    "Loses": 0,
+                    "RPS": "0",
+                    "Ban": false,
+                    "Reasons": []
+               }
+          },
+          "Left": {},
           "Dead": {}
      }
 }

@@ -240,7 +240,8 @@ async def on_member_join(member:discord.Member):
     await member.send(f'Hi **{member.name}**, Welcome to the Server! Be sure to read the rules to stay out of trouble. Have a great time!')
     print("Joined")
     server = member.guild.name
-    data[server] = dat
+    if data.get(server,[]) == []:
+        data[server] = dat
     #print(type(data) + 'asdasdasdasdad')
     if not str(member.id) in data[server]['Left'].keys():
         memberData = {
@@ -518,7 +519,7 @@ async def on_message(message):
     elif message.content ==  "save all" and message.author == ctx.guild.owner:
         x = message.guild.members
         server = ctx.message.guild.name
-        if data[server] == []:
+        if data.get(server,[]) == []:
             data[server] = dat
         roles[server] = {}
         for role in ctx.message.guild.roles:
@@ -590,5 +591,4 @@ for fileName in os.listdir('./cogs'):
     if fileName.endswith('.py'):
         client.load_extension(f'cogs.{fileName[:-3]}') 
 # client.run('ODcwNjY5Mjc2ODcxMjYyMjE4.YQQH8w.Od5lsYmpsJ9BnvHrWzIZOYSdRFE') unban
-client.run('OTEyMzc2NzUwODYyODkzMTI2.YZvDEA.wy2qGmvp3NeXXPmsKXTFReYRgKk')
 # ⬢
