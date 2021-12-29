@@ -586,6 +586,7 @@ async def on_message(message):
         with open('Servers.json','w') as f:
             json.dump(servers,f, indent=5)
     await client.process_commands(message)
+    
 
 for fileName in os.listdir('./cogs'):
     if fileName.endswith('.py'):
