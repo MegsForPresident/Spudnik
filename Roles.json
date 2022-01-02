@@ -1,15 +1,32 @@
 {
      "Dreadwing's Loyalty Group": {
           "@everyone": {
+               "721942871422271619": {
+                    "User": "MegaMelon",
+                    "Nickname": null,
+                    "Id": "721942871422271619"
+               },
                "758713337613385750": {
                     "User": "Wings_Of_Dread",
                     "Nickname": null,
                     "Id": "758713337613385750"
                },
+               "870669276871262218": {
+                    "User": "Spudnik",
+                    "Nickname": null,
+                    "Id": "870669276871262218"
+               },
                "912376750862893126": {
                     "User": "Praimus",
                     "Nickname": null,
                     "Id": "912376750862893126"
+               }
+          },
+          "Spudnik": {
+               "870669276871262218": {
+                    "User": "Spudnik",
+                    "Nickname": null,
+                    "Id": "870669276871262218"
                }
           },
           "Loyal Follower": {
@@ -69,6 +86,181 @@
                     "User": "Google Bot",
                     "Nickname": null,
                     "Id": "837614958870921236"
+               }
+          },
+          "Spudnik": {
+               "870669276871262218": {
+                    "User": "Spudnik",
+                    "Nickname": null,
+                    "Id": "870669276871262218"
+               }
+          }
+     },
+     "Decepticons": {
+          "@everyone": {
+               "369526592839614468": {
+                    "User": "Commander0704",
+                    "Nickname": null,
+                    "Id": "369526592839614468"
+               },
+               "586715502685192204": {
+                    "User": "Soundwave",
+                    "Nickname": null,
+                    "Id": "586715502685192204"
+               },
+               "706527803859927071": {
+                    "User": "Ultra Magnus",
+                    "Nickname": null,
+                    "Id": "706527803859927071"
+               },
+               "714766844602482759": {
+                    "User": "StaringDog",
+                    "Nickname": null,
+                    "Id": "714766844602482759"
+               },
+               "721942871422271619": {
+                    "User": "MegaMelon",
+                    "Nickname": null,
+                    "Id": "721942871422271619"
+               },
+               "729626471940751460": {
+                    "User": "Borax",
+                    "Nickname": null,
+                    "Id": "729626471940751460"
+               },
+               "757655790248263870": {
+                    "User": "\ud83d\udc80-\u0d9e_Shad..._Vi_P_101103_\u0d9e-\ud83d\udc80",
+                    "Nickname": "boom",
+                    "Id": "757655790248263870"
+               },
+               "758713337613385750": {
+                    "User": "Wings_Of_Dread",
+                    "Nickname": "Shockwave_Logical",
+                    "Id": "758713337613385750"
+               },
+               "860267454814486538": {
+                    "User": "Zappy2033",
+                    "Nickname": "A starscream follower",
+                    "Id": "860267454814486538"
+               },
+               "861796292442062869": {
+                    "User": "miss.ladii",
+                    "Nickname": "Ally",
+                    "Id": "861796292442062869"
+               },
+               "870669276871262218": {
+                    "User": "Spudnik",
+                    "Nickname": null,
+                    "Id": "870669276871262218"
+               }
+          },
+          "Megatron Followers": {
+               "369526592839614468": {
+                    "User": "Commander0704",
+                    "Nickname": null,
+                    "Id": "369526592839614468"
+               },
+               "586715502685192204": {
+                    "User": "Soundwave",
+                    "Nickname": null,
+                    "Id": "586715502685192204"
+               },
+               "706527803859927071": {
+                    "User": "Ultra Magnus",
+                    "Nickname": null,
+                    "Id": "706527803859927071"
+               },
+               "714766844602482759": {
+                    "User": "StaringDog",
+                    "Nickname": null,
+                    "Id": "714766844602482759"
+               },
+               "729626471940751460": {
+                    "User": "Borax",
+                    "Nickname": null,
+                    "Id": "729626471940751460"
+               },
+               "757655790248263870": {
+                    "User": "\ud83d\udc80-\u0d9e_Shad..._Vi_P_101103_\u0d9e-\ud83d\udc80",
+                    "Nickname": "boom",
+                    "Id": "757655790248263870"
+               },
+               "758713337613385750": {
+                    "User": "Wings_Of_Dread",
+                    "Nickname": "Shockwave_Logical",
+                    "Id": "758713337613385750"
+               },
+               "860267454814486538": {
+                    "User": "Zappy2033",
+                    "Nickname": "A starscream follower",
+                    "Id": "860267454814486538"
+               },
+               "861796292442062869": {
+                    "User": "miss.ladii",
+                    "Nickname": "Ally",
+                    "Id": "861796292442062869"
+               },
+               "895303562400256092": {
+                    "User": "General_Kenobi!!!",
+                    "Nickname": null,
+                    "Id": "895303562400256092"
+               }
+          },
+          "Decepticon Science Division Leader": {
+               "758713337613385750": {
+                    "User": "Wings_Of_Dread",
+                    "Nickname": "Shockwave_Logical",
+                    "Id": "758713337613385750"
+               }
+          },
+          "Decepticon Science Division": {
+               "758713337613385750": {
+                    "User": "Wings_Of_Dread",
+                    "Nickname": "Shockwave_Logical",
+                    "Id": "758713337613385750"
+               }
+          },
+          "Soundwave's Minicon": {
+               "369526592839614468": {
+                    "User": "Commander0704",
+                    "Nickname": null,
+                    "Id": "369526592839614468"
+               },
+               "721942871422271619": {
+                    "User": "MegaMelon",
+                    "Nickname": null,
+                    "Id": "721942871422271619"
+               },
+               "860267454814486538": {
+                    "User": "Zappy2033",
+                    "Nickname": "A starscream follower",
+                    "Id": "860267454814486538"
+               }
+          },
+          "Partners": {
+               "586715502685192204": {
+                    "User": "Soundwave",
+                    "Nickname": null,
+                    "Id": "586715502685192204"
+               },
+               "729626471940751460": {
+                    "User": "Borax",
+                    "Nickname": null,
+                    "Id": "729626471940751460"
+               }
+          },
+          "Bot Bois": {
+               "870669276871262218": {
+                    "User": "Spudnik",
+                    "Nickname": null,
+                    "Id": "870669276871262218"
+               }
+          },
+          "Megatron": {
+               "721942871422271619": {
+                    "User": "MegaMelon",
+                    "Nickname": null,
+                    "Id": "721942871422271619"
                }
           },
           "Spudnik": {

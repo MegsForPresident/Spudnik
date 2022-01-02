@@ -30,10 +30,10 @@ dat = {
 print('Loaded Users...')
 # create
 with open('Users.json') as f:
-        try:
-            data = json.load(f)
-        except Exception:
-            data = {}
+    try:
+        data = json.load(f)
+    except Exception:
+        data = {}
 
 with open('Roles.json') as f:
     try:
@@ -275,6 +275,7 @@ async def on_member_join(member:discord.Member):
     embed.set_image(url=member.avatar_url)
 
     chn = client.get_channel(int(servers[server]['Welcome']))
+    await chn.send(f'Welcome to the server {member.mention}')
     await chn.send(embed=embed)
 
     print(member.guild.name)
@@ -310,11 +311,9 @@ async def on_member_remove(member:discord.Member):
     embed = discord.Embed(colour=member.color)
     embed.set_author(name=f"Adiue from the Decepticons")
     embed.add_field(name="Name", value=member.display_name)
-    embed.add_field(name="Account Created on",value=member.created_at.strftime("%d.%m.%Y,\n%H:%M.%S"))    
     embed.add_field(name="Joined:", value=member.joined_at.strftime("%d.%m.%Y,\n%H:%M.%S"))    
     embed.add_field(name="Is Bot", value='Yes' if member.bot else 'No')
-    embed.add_field(name="Status", value=member.mobile_status)
-    embed.add_field(name="Nitro", value=member.premium_since)
+    
     embed.set_image(url=member.avatar_url)
     
     chn =  client.get_channel(int(servers[server]['Leave']))
@@ -471,12 +470,30 @@ async def on_reaction_add(reaction, user):
     if "verification" in  reaction.message.content :
         print(reaction.message.content, user.name)
 
+# @client.command()
+# async def Memdata(ctx, limit=5):
+#     server = ctx.guild
+#     if limit > 8:
+#         await ctx.send('nO')
+#     print(server)
+#     for member in data[server.name]['Member']:
+#         embed = discord.Embed(colour=member.color)
+#         embed.set_author(name=f"Welcome To the Decepticons")
+#         embed.add_field(name="Name", value=member.display_name)
+#         embed.add_field(name="Account Created on",value=member.created_at.strftime("%d.%m.%Y,\n%H:%M.%S"))    
+#         embed.add_field(name="Joined:", value=member.joined_at.strftime("%d.%m.%Y,\n%H:%M.%S"))    
+#         embed.add_field(name="Is Bot", value='Yes' if member.bot else 'No')
+#         embed.add_field(name="Status", value=member.mobile_status)
+#         embed.add_field(name="Nitro", value=member.premium_since)
+#         embed.set_image(url=member.avatar_url)
+#         await ctx.send(embed=embed)
+
 @client.event
 async def on_message(message):
     print("\n",message.author,"messaged",message.content)
     ctx = await client.get_context(message)
     member = message.author
-    server = ctx.guild
+    server=ctx.guild
 
     if message.author == client.user and message.embeds == []:
         if message.content == "":
@@ -519,6 +536,7 @@ async def on_message(message):
     elif message.content ==  "save all" and message.author == ctx.guild.owner:
         x = message.guild.members
         server = ctx.message.guild.name
+        print(type(data))
         if data.get(server,[]) == []:
             data[server] = dat
         roles[server] = {}
@@ -563,7 +581,7 @@ async def on_message(message):
         def check(message):
             return owner.id == message.author.id
 
-        await ctx.send("Send the Welcoming Id:")
+        await ctx.send("Send the Welcoming Id1:")
         wel = await client.wait_for('message',check=check)
 
         await ctx.send("Send the Leaving Id:")
@@ -585,12 +603,11 @@ async def on_message(message):
         servers[server.name] = serverData
         with open('Servers.json','w') as f:
             json.dump(servers,f, indent=5)
+        await member.send(serverData[server.name])
     await client.process_commands(message)
 
 
 for fileName in os.listdir('./cogs'):
     if fileName.endswith('.py'):
         client.load_extension(f'cogs.{fileName[:-3]}') 
-client.run('ODcwNjY5Mjc2ODcxMjYyMjE4.YQQH8w.jR_s-zy7gTt5arHPufsK_5p7prA')
-# client.run('OTEyMzc2NzUwODYyODkzMTI2.YZvDEA.kXZqdfhiFxBxYw5P8lFjcZ-ZWsQ')
-# ⬢
+
